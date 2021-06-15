@@ -5,14 +5,13 @@ import { withRouter } from 'next/router';
 import qs from 'qs';
 import algoliasearch from 'algoliasearch/lite';
 import { findResultsState } from 'react-instantsearch-dom/server';
-import { Head, App } from '../components';
-import { CustomSearchBox } from '../components/Search/AlgoliaSearchBox'
+import { App } from '../components';
 import Header from '../components/Header';
 import Home from '../components/Home';
 
 const searchClient = algoliasearch(
-  'BLEP8CUML9',
-  '7cd27e624df5715add5588977ffffc18'
+  'B1G2GM9NG0',
+  'aadef574be1f9252bb48d4ea09b5cfe5'
 );
 
 const updateAfter = 700;
@@ -27,7 +26,7 @@ const searchStateToURL = searchState =>
 
 const DEFAULT_PROPS = {
   searchClient,
-  indexName: 'instant_SEARCH',
+  indexName: 'demo_ecommerce',
 };
 
 class Page extends React.Component {
