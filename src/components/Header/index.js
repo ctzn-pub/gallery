@@ -9,20 +9,34 @@ import {
   Pagination,
   InstantSearch,
   ClearRefinements,
+  SortBy,
 } from 'react-instantsearch-dom';
+
+// const SearchResults = ({
+//   hit: {
+//     objectID,
+//     title,
+//     id,
+//     data_source,
+//     geography,
+//     definition,
+//     topic,
+//     type,
+//   },
+
 
 function Hit (props) {
   return (
     <div>
       <img src={props.hit.image} align="left" alt={props.hit.name} />
       <div className="hit-name">
-        <Highlight attribute="name" hit={props.hit} />
+        <Highlight attribute="id" hit={props.hit} />
       </div>
-      {/* <div className="hit-description">
-        <Highlight attribute="description" hit={props.hit} />
-      </div> */}
+      <div className="hit-objectID">
+        <Highlight attribute="objectID" hit={props.hit} />
+      </div>
       <div className="hit-data-source">
-        <Highlight attribute="data-source" hit={props.hit} />
+        <Highlight attribute="data_source" hit={props.hit} />
       </div>
       <div className="hit-geography">
         <Highlight attribute="geography" hit={props.hit} />
@@ -74,16 +88,24 @@ class Header extends React.Component {
           <div className="left-panel">
           <ClearRefinements />
           <h2>Categories</h2>
-            <RefinementList attribute="categories" />
+            <RefinementList attribute="geography" />
           <h2>Hierarchical Menu</h2>
-            <RefinementList attribute="hierarchicalMenu" />
+            <RefinementList attribute="data_source" />
           <h2>Refinement List</h2>
             <RefinementList attribute="refinmentList" />
-          <h2>Menu</h2>
-            <RefinementList attribute="topics" />
+          <h2>Topic</h2>
+            <RefinementList attribute="topic" />
           </div>
           <div className="right-panel">
             <SearchBox />
+            {/* <SortBy
+              defaultRefinement="instant_search"
+                items={[
+                  { value: 'instant_search', label: 'Featured' },
+                  { value: 'instant_search_price_asc', label: 'topic' },
+                  { value: 'instant_search_price_desc', label: 'title' },
+              ]}
+            /> */}
             <Hits hitComponent={Hit} />
             <Pagination />
           </div>

@@ -10,8 +10,8 @@ import Header from '../components/Header';
 import Home from '../components/Home';
 
 const searchClient = algoliasearch(
-  'B1G2GM9NG0',
-  'aadef574be1f9252bb48d4ea09b5cfe5'
+  'BLEP8CUML9',
+  '7cd27e624df5715add5588977ffffc18'
 );
 
 const updateAfter = 700;
@@ -26,7 +26,7 @@ const searchStateToURL = searchState =>
 
 const DEFAULT_PROPS = {
   searchClient,
-  indexName: 'demo_ecommerce',
+  indexName: 'instant_SEARCH',
 };
 
 class Page extends React.Component {
