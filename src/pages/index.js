@@ -1,3 +1,4 @@
+// import algoliasearch from 'algoliasearch/lite';
 import { isEqual } from 'lodash';
 import React from 'react';
 import PropTypes from 'prop-types';
@@ -5,13 +6,13 @@ import { withRouter } from 'next/router';
 import qs from 'qs';
 import algoliasearch from 'algoliasearch/lite';
 import { findResultsState } from 'react-instantsearch-dom/server';
-import { App } from '../components';
 import Header from '../components/Header';
 import Home from '../components/Home';
+import { App } from '../components';
 
 const searchClient = algoliasearch(
-  'BLEP8CUML9',
-  '7cd27e624df5715add5588977ffffc18'
+  process.env.NEXT_PUBLIC_ALGOLIA_APP_ID,
+  process.env.NEXT_PUBLIC_ALGOLIA_SEARCH_API_ID
 );
 
 const updateAfter = 700;
@@ -46,6 +47,7 @@ class Page extends React.Component {
     const resultsState = await findResultsState(App, {
       ...DEFAULT_PROPS,
       searchState,
+      searchClient,
     });
 
     return {

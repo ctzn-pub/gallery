@@ -10,19 +10,12 @@ import {
   InstantSearch,
   ClearRefinements,
   SortBy,
+  HierarchicalMenu,
+  Menu,
+  Panel,
+  ToggleRefinement,
+  Ratings,
 } from 'react-instantsearch-dom';
-
-// const SearchResults = ({
-//   hit: {
-//     objectID,
-//     title,
-//     id,
-//     data_source,
-//     geography,
-//     definition,
-//     topic,
-//     type,
-//   },
 
 
 function Hit (props) {
@@ -67,6 +60,7 @@ class Header extends React.Component {
     searchClient: PropTypes.object,
   };
 
+
   render() {
     return (
       <InstantSearch
@@ -82,31 +76,30 @@ class Header extends React.Component {
 
         <Configure hitsPerPage={8} />
         <header>
-          <h1>InstantSearch + Next.Js</h1>
+          <h1>InstantSearch Gallery</h1>
         </header>
         <main>
           <div className="left-panel">
+          
           <ClearRefinements />
-          <h2>Categories</h2>
+          <div>
             <RefinementList attribute="geography" />
+            </div>
+          <h2>Data Source</h2>
+            <RefinementList 
+            attribute="data_source" />
           <h2>Hierarchical Menu</h2>
-            <RefinementList attribute="data_source" />
-          <h2>Refinement List</h2>
-            <RefinementList attribute="refinmentList" />
+          <Menu
+              attribute="objectID"
+          />
           <h2>Topic</h2>
             <RefinementList attribute="topic" />
           </div>
           <div className="right-panel">
             <SearchBox />
-            {/* <SortBy
-              defaultRefinement="instant_search"
-                items={[
-                  { value: 'instant_search', label: 'Featured' },
-                  { value: 'instant_search_price_asc', label: 'topic' },
-                  { value: 'instant_search_price_desc', label: 'title' },
-              ]}
-            /> */}
+            <div className="results">
             <Hits hitComponent={Hit} />
+            </div>
             <Pagination />
           </div>
         </main>
